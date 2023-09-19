@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import backendUrl from './config'; // config.js 파일을 가져옵니다.
+import backendUrl from '../config';
 
 const Members = () => {
   const [members, setMembers] = useState([]);
