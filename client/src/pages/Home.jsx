@@ -1,61 +1,69 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import backendUrl from '../config';
 
-const Add = () => {
-  const [member, setMember] = useState({
-    name: "",
-    student_number: "",
-    photo_url: "",
-  });
-  const [error, setError] = useState(false);
+const Members = () => {
+  const [members, setMembers] = useState([]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchAllMembers = async () => {
+      try {
+        const res = await axios.get(`${backendUrl}/members`); 
+        setMembers(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllMembers();
+  }, []);
 
-  const handleChange = (e) => {
-    setMember((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const handleDelete = async (id) => {
     try {
-      await axios.post(`${backendUrl}/members`, member);
-      navigate("/"); 
+      await axios.delete(`${backendUrl}/members/${id}`);
+      window.location.reload();
     } catch (err) {
       console.log(err);
-      setError(true);
     }
   };
 
   return (
-    <div className="form">
-      <h1>Add New Member</h1>
-      <div className="input_forms">
-        <input
-          type="text"
-          placeholder="Member name"
-          name="name"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Student number"
-          name="student_number"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Photo URL"
-          name="photo_url"
-          onChange={handleChange}
-        />
-        <button onClick={handleClick}>Add</button>
-        {error && "Something went wrong!"}
-        <Link to="/">See all members</Link>
+    <div>
+      <h1>Whyrony Members</h1>
+      <div className="members">
+        {members.map((member) => (
+          <div key={member.id} className="member">
+            <img src={member.photo_url} alt="" />
+            <h3>{member.name}</h3>
+            <p>ID: {member.student_number}</p>
+            <button className="delete" onClick={() => handleDelete(member.id)}>
+              Delete
+            </button>
+            <button className="update">
+              <Link
+                to={`/update/${member.id}`}
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                Update
+              </Link>
+            </button>
+          </div>
+        ))}
       </div>
+
+      <button className="addHome">
+        <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
+          Add new member
+        </Link>
+      </button>
+
+      {/* <button className="addHome">
+        <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
+          Add Random member
+        </Link>
+      </button> */}
     </div>
   );
 };
 
-export default Add;
+export default Members;
