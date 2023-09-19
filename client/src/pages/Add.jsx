@@ -31,27 +31,29 @@ const Add = () => {
   return (
     <div className="form">
       <h1>Add New Member</h1>
-      <input
-        type="text"
-        placeholder="Member name"
-        name="name"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="Student number"
-        name="student_number"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="Photo URL"
-        name="photo_url"
-        onChange={handleChange}
-      />
-      <button onClick={handleClick}>Add</button>
-      {error && "Something went wrong!"}
-      <Link to="/">See all members</Link>
+      <div className="input_forms">
+        <input
+          type="text"
+          placeholder="Member name"
+          name="name"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Student number"
+          name="student_number"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Photo URL"
+          name="photo_url"
+          onChange={handleChange}
+        />
+        <button onClick={handleClick}>Add</button>
+        {error && "Something went wrong!"}
+        <Link to="/">See all members</Link>
+      </div>
     </div>
   );
 };

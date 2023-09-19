@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.hr {
+  border: 1px solid #000; /* 가로 구분선 스타일 지정 */
+  margin: 10px 0; /* 구분선 위아래 여백 설정 */
+}

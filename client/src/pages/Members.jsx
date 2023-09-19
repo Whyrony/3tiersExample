@@ -29,12 +29,12 @@ const Members = () => {
 
   return (
     <div>
-      <h1>Team Members</h1>
+      <h1>Whyrony Members</h1>
       <div className="members">
         {members.map((member) => (
           <div key={member.id} className="member">
             <img src={member.photo_url} alt="" />
-            <h2>{member.name}</h2>
+            <h3>{member.name}</h3>
             <p>ID: {member.student_number}</p>
             <button className="delete" onClick={() => handleDelete(member.id)}>
               Delete
@@ -56,6 +56,12 @@ const Members = () => {
           Add new member
         </Link>
       </button>
+
+      {/* <button className="addHome">
+        <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
+          Add Random member
+        </Link>
+      </button> */}
     </div>
   );
 };
