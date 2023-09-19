@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1 className="italic">This is "Whyrony".</h1>
+      <h1 style={{ fontStyle: "italic", fontSize:"100px" }}>This is "Whyrony".</h1>
       <h2>2023 System Architecture Class</h2>
       <h3>Prof. Artchoi</h3>
       <br></br>
