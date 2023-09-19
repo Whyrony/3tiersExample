@@ -1,6 +1,6 @@
 # 3tiersExample
 
-## Mebers Schema
+## Members Schema
 ```
 CREATE TABLE members (
   id INT AUTO_INCREMENT PRIMARY KEY,
