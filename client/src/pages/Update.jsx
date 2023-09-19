@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import backendUrl from './config'; // config.js 파일을 가져옵니다.
 
 const Update = () => {
   const [member, setMember] = useState({
