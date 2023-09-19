@@ -3,62 +3,54 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Add = () => {
-  const [book, setBook] = useState({
-    title: "",
-    desc: "",
-    price: null,
-    cover: "",
+  const [member, setMember] = useState({
+    name: "",
+    student_number: "",
+    photo_url: "",
   });
-  const [error,setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setMember((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/books", book);
-      navigate("/");
+      await axios.post("http://localhost:4000/members", member);
+      navigate("/members"); 
     } catch (err) {
       console.log(err);
-      setError(true)
+      setError(true);
     }
   };
 
   return (
     <div className="form">
-      <h1>Add New Book</h1>
+      <h1>Add New Member</h1>
       <input
         type="text"
-        placeholder="Book title"
-        name="title"
-        onChange={handleChange}
-      />
-      <textarea
-        rows={5}
-        type="text"
-        placeholder="Book desc"
-        name="desc"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        placeholder="Book price"
-        name="price"
+        placeholder="Member name"
+        name="name"
         onChange={handleChange}
       />
       <input
         type="text"
-        placeholder="Book cover"
-        name="cover"
+        placeholder="Student number"
+        name="student_number"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="Photo URL"
+        name="photo_url"
         onChange={handleChange}
       />
       <button onClick={handleClick}>Add</button>
       {error && "Something went wrong!"}
-      <Link to="/">See all books</Link>
+      <Link to="/members">See all members</Link>
     </div>
   );
 };

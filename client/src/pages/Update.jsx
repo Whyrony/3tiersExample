@@ -3,29 +3,28 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Update = () => {
-  const [book, setBook] = useState({
-    title: "",
-    desc: "",
-    price: null,
-    cover: "",
+  const [member, setMember] = useState({
+    name: "",
+    student_number: "",
+    photo_url: "",
   });
-  const [error,setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const bookId = location.pathname.split("/")[2];
+  const memberId = location.pathname.split("/")[2];
 
   const handleChange = (e) => {
-    setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setMember((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:4000/books/${bookId}`, book);
-      navigate("/");
+      await axios.put(`http://localhost:4000/members/${memberId}`, member);
+      navigate("/members"); // 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다.
     } catch (err) {
       console.log(err);
       setError(true);
@@ -34,35 +33,28 @@ const Update = () => {
 
   return (
     <div className="form">
-      <h1>Update the Book</h1>
+      <h1>Update Member Info</h1>
       <input
         type="text"
-        placeholder="Book title"
-        name="title"
-        onChange={handleChange}
-      />
-      <textarea
-        rows={5}
-        type="text"
-        placeholder="Book desc"
-        name="desc"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        placeholder="Book price"
-        name="price"
+        placeholder="Member name"
+        name="name"
         onChange={handleChange}
       />
       <input
         type="text"
-        placeholder="Book cover"
-        name="cover"
+        placeholder="Student number"
+        name="student_number"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="Photo URL"
+        name="photo_url"
         onChange={handleChange}
       />
       <button onClick={handleClick}>Update</button>
       {error && "Something went wrong!"}
-      <Link to="/">See all books</Link>
+      <Link to="/members">See all members</Link> {/* 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다. */}
     </div>
   );
 };
