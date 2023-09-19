@@ -35,27 +35,29 @@ const Update = () => {
   return (
     <div className="form">
       <h1>Update Member Info</h1>
-      <input
-        type="text"
-        placeholder="Member name"
-        name="name"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="Student number"
-        name="student_number"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="Photo URL"
-        name="photo_url"
-        onChange={handleChange}
-      />
-      <button onClick={handleClick}>Update</button>
-      {error && "Something went wrong!"}
-      <Link to="/">See all members</Link> {/* 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다. */}
+      <div className="input_forms">
+        <input
+          type="text"
+          placeholder="Member name"
+          name="name"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Student number"
+          name="student_number"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Photo URL"
+          name="photo_url"
+          onChange={handleChange}
+        />
+        <button onClick={handleClick}>Update</button>
+        {error && "Something went wrong!"}
+        <Link to="/">See all members</Link> {/* 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다. */}
+      </div>
     </div>
   );
 };
