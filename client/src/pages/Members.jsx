@@ -35,7 +35,7 @@ const Members = () => {
           <div key={member.id} className="member">
             <img src={member.photo_url} alt="" />
             <h2>{member.name}</h2>
-            <p>Student Number: {member.student_number}</p>
+            <p>ID: {member.student_number}</p>
             <button className="delete" onClick={() => handleDelete(member.id)}>
               Delete
             </button>
