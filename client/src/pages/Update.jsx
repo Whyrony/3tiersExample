@@ -55,7 +55,7 @@ const Update = () => {
       />
       <button onClick={handleClick}>Update</button>
       {error && "Something went wrong!"}
-      <Link to="/members">See all members</Link> {/* 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다. */}
+      <Link to="/">See all members</Link> {/* 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다. */}
     </div>
   );
 };
