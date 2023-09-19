@@ -50,7 +50,7 @@ const Add = () => {
       />
       <button onClick={handleClick}>Add</button>
       {error && "Something went wrong!"}
-      <Link to="/members">See all members</Link>
+      <Link to="/">See all members</Link>
     </div>
   );
 };

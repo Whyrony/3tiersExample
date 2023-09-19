@@ -51,10 +51,7 @@ const Members = () => {
       </div>
 
       <button className="addHome">
-        <Link
-          to="/add"
-          style={{ color: "inherit", textDecoration: "none" }}
-        >
+        <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
           Add new member
         </Link>
       </button>
