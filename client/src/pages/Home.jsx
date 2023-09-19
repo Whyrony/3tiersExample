@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1>Welcome to Whyrony</h1>
+      <h1>This is "Whyrony".</h1>
+      <h2>2023 System Architecture Class</h2>
+      <h3>Prof. Artchoi</h3>
+      <br></br>
+      <p>2023-2, learn the fundamentals of system architecture class systems.</p>
       <button className="addHome">
         <Link to="/members" style={{ color: "inherit", textDecoration: "none" }}>
           View Members
