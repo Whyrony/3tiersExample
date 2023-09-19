@@ -23,7 +23,7 @@ const Update = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:4000/members/${memberId}`, member);
+      await axios.put(`${backendUrl}/members/${memberId}`, member);
       navigate("/members"); // 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다.
     } catch (err) {
       console.log(err);

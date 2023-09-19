@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import backendUrl from './config'; // config.js 파일을 가져옵니다.
 
 const Add = () => {
   const [member, setMember] = useState({
@@ -19,7 +20,7 @@ const Add = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/members", member);
+      await axios.post(`${backendUrl}/members`, member);
       navigate("/members"); 
     } catch (err) {
       console.log(err);

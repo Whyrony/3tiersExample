@@ -8,7 +8,7 @@ const Members = () => {
   useEffect(() => {
     const fetchAllMembers = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/members");
+        const res = await axios.get(`${backendUrl}/members`); 
         setMembers(res.data);
       } catch (err) {
         console.log(err);
@@ -19,7 +19,7 @@ const Members = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/members/${id}`);
+      await axios.delete(`${backendUrl}/members/${id}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
