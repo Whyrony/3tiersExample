@@ -17,8 +17,8 @@ app.get("/", (req, res) => {
   res.json("hello");
 });
 
-app.get("/books", (req, res) => {
-  const q = "SELECT * FROM books";
+app.get("/members", (req, res) => {
+  const q = "SELECT * FROM members";
   db.query(q, (err, data) => {
     if (err) {
       console.log(err);
@@ -28,14 +28,13 @@ app.get("/books", (req, res) => {
   });
 });
 
-app.post("/books", (req, res) => {
-  const q = "INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)";
+app.post("/members", (req, res) => {
+  const q = "INSERT INTO members(`name`, `student_number`, `photo_url`) VALUES (?)";
 
   const values = [
-    req.body.title,
-    req.body.desc,
-    req.body.price,
-    req.body.cover,
+    req.body.name,
+    req.body.student_number,
+    req.body.photo_url,
   ];
 
   db.query(q, [values], (err, data) => {
@@ -44,28 +43,27 @@ app.post("/books", (req, res) => {
   });
 });
 
-app.delete("/books/:id", (req, res) => {
-  const bookId = req.params.id;
-  const q = " DELETE FROM books WHERE id = ? ";
+app.delete("/members/:id", (req, res) => {
+  const memberId = req.params.id;
+  const q = "DELETE FROM members WHERE id = ?";
 
-  db.query(q, [bookId], (err, data) => {
+  db.query(q, [memberId], (err, data) => {
     if (err) return res.send(err);
     return res.json(data);
   });
 });
 
-app.put("/books/:id", (req, res) => {
-  const bookId = req.params.id;
-  const q = "UPDATE books SET `title`= ?, `desc`= ?, `price`= ?, `cover`= ? WHERE id = ?";
+app.put("/members/:id", (req, res) => {
+  const memberId = req.params.id;
+  const q = "UPDATE members SET `name`= ?, `student_number`= ?, `photo_url`= ? WHERE id = ?";
 
   const values = [
-    req.body.title,
-    req.body.desc,
-    req.body.price,
-    req.body.cover,
+    req.body.name,
+    req.body.student_number,
+    req.body.photo_url,
   ];
 
-  db.query(q, [...values,bookId], (err, data) => {
+  db.query(q, [...values, memberId], (err, data) => {
     if (err) return res.send(err);
     return res.json(data);
   });
