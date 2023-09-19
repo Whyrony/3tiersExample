@@ -25,7 +25,7 @@ const Update = () => {
 
     try {
       await axios.put(`${backendUrl}/members/${memberId}`, member);
-      navigate("/members"); // 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다.
+      navigate("/"); // 이 부분은 Members 목록 페이지로 이동하도록 수정했습니다.
     } catch (err) {
       console.log(err);
       setError(true);

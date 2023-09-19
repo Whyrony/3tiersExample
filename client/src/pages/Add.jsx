@@ -21,7 +21,7 @@ const Add = () => {
     e.preventDefault();
     try {
       await axios.post(`${backendUrl}/members`, member);
-      navigate("/members"); 
+      navigate("/"); 
     } catch (err) {
       console.log(err);
       setError(true);
